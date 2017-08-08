@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>工资管理系统首页</title><link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/index_style.css">
+</head>
+<body>
+      <div class="container">
+          <h2 class="text-center">工资管理系统首页</h2>
+
+      	  <div class="header form-group form-inline">
+      	  <!-- 	<input class="form-control" type="text" name="搜索员工" placeholder="请输入员工ID">
+      	    <input class="btn btn-info" id="lookfor" type="button" value="搜索"> -->
+      	    <a class="btn btn-danger" type="button" id="logout" style="float:right" href="log.html">退出</a>
+      	  </div><!-- header end -->
+
+      	  <div id="tabs">
+      	  	 <ul class="nav nav-tabs nav-justified"> 
+      	  	    <li class="active"><a href="index.html">员工工资展示</a></li>
+      	  	    <li><a href="add.html">添加员工信息</a></li>
+      	  	 	<li><a href="salary_set.html">基本工资设定</a></li>
+      	  	 	<li><a href="overtime.html">加班津贴管理</a></li>
+      	  	 	<li><a href="bonus.html">员工年终奖金</a></li>
+      	  	 </ul>
+      	  </div><!-- middle end -->
+          
+          <br>
+
+          <table class="table table-striped table-border table-hover" id="msg">
+              <tr>
+                <td>姓名</td>
+                <td>ID</td>
+                <td>性别</td>
+                <td>电话</td>
+                <td>地址</td>
+                <td>工种</td>
+                <td>等级</td>
+                <td>部门</td>
+                <td>年薪</td>
+              </tr>
+          </table>
+
+
+      </div>
+
+      <script type="text/javascript">
+      	  $(function(){
+                   $.ajax({
+                       url:'index',
+                       type:'post',
+                       dataType:'json',
+                       success:function(a){
+                          var val="";
+                          for(var i=0;i<a.length;i++){
+                              val = "<tr><td>" + a[i].workerName + "</td><td>" + a[i].workerId +"</td><td>" + a[i].workerSex + "</td><td>" + a[i].workerTel + "</td><td>" + a[i].workerAddress + "</td><td>" + a[i].workerType +"</td><td>" + a[i].workerGrade +"</td><td>" + a[i].workerDept + "</td><td>" + a[i].salary + "</td></tr>";
+
+                              $("#msg").append(val);
+                          }      
+                       },
+                       error:function(){
+                        alert("error");
+                       }
+                   });
+      	  });
+      </script>
+</body>
+</html>

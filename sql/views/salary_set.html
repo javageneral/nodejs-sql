@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>工资管理系统首页</title><link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/index_style.css">
+</head>
+<body>
+      <div class="container">
+          <h2 class="text-center">工资管理系统首页</h2>
+
+      	  <div class="header form-group form-inline">
+      	  <!-- 	<input class="form-control" type="text" name="搜索员工" placeholder="请输入员工ID">
+      	    <input class="btn btn-info" type="button" value="搜索"> -->
+            <a class="btn btn-danger" type="button" id="logout" style="float:right" href="log.html">退出</a>
+      	  </div><!-- header end -->
+
+      	  <div id="tabs">
+      	  	 <ul class="nav nav-tabs nav-justified"> 
+        	  	  <li><a href="index.html">员工工资展示</a></li>
+        	  	  <li><a href="add.html">添加员工信息</a></li>
+        	  	 	<li class="active"><a href="salary_set.html">基本工资设定</a></li>
+        	  	  <li><a href="overtime.html">加班津贴管理</a></li>
+                <li><a href="bonus.html">员工年终奖金</a></li>
+      	  	 </ul>
+      	  </div><!-- tabs end -->
+           
+          <div id="add_message">
+              <form method="post" class="form-inline form-group">
+              <h3>员工列表：</h3>
+                   <ul id="form1"></ul>
+                   <input type="text" id="wid" class="form-control" placeholder="请输入员工Id">
+                   <input type="text" id="sal" class="form-control" placeholder="请输入员工基本工资">
+                   <input type="save" id="save" class="btn btn-info" value="确定">
+              </form>
+          </div>
+      </div>
+
+      <script type="text/javascript">
+            //加载员工姓名以及id信息
+            $(function(){
+                  $.ajax({
+                     url:'salary_set',
+                     method:'get',
+                     dataType:'json',
+                     success:function(a){
+                           //var b = JSON.stringify(data);//使用 JSON.stringify() 方法将 JavaScript 对象转换为字符串
+                           //var a = JSON.parse(b);//使用 JSON.parse() 方法将数据转换为 JavaScript 对象
+                           var val = "";
+                           for(var i=0;i<a.length;i++){
+                             val = "<li class='list-unstyled form-group' style='margin-bottom:12px'><strong style='display:inline-block;font-size:17px;width:300px'>" + a[i].workerName + "【Id:" + a[i].workerId + "】"  + "</strong></li></br>";
+                             $('#form1').append(val);
+                           }
+                     },
+                     error:function(){
+                      alert("error");
+                     }
+                  });
+            });
+            //设置员工基本工资
+            $("#save").click(function(){
+                var wid = document.getElementById('wid').value;
+                var sal = document.getElementById('sal').value;
+                $.ajax({
+                     url:'sal',
+                     type:'post',
+                     dataType:'json',
+                     data:{wid:wid,sal:sal},
+                     success:function(){
+                          alert("设置成功");
+                     }
+                });
+            });
+            </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>工资管理系统首页</title><link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/index_style.css">
+</head>
+<body>
+      <div class="container">
+          <h2 class="text-center">工资管理系统首页</h2>
+
+      	  <div class="header form-group form-inline">
+      	  	<!-- <input class="form-control" type="text" name="搜索员工" placeholder="请输入员工ID">
+      	    <input class="btn btn-info" type="button" value="搜索"> -->
+            <a class="btn btn-danger" type="button" id="logout" style="float:right" href="log.html">退出</a>
+      	  </div><!-- header end -->
+
+      	  <div id="tabs">
+      	  	 <ul class="nav nav-tabs nav-justified"> 
+        	  	  <li><a href="index.html">员工工资展示</a></li>
+        	  	  <li class="active"><a href="add.html">添加员工信息</a></li>
+        	  	 	<li><a href="salary_set.html">基本工资设定</a></li>
+        	  	 	<li><a href="overtime.html">加班津贴管理</a></li>
+        	  	 	<li><a href="bonus.html">员工年终奖金</a></li>
+      	  	 </ul>
+      	  </div><!-- tabs end -->
+           
+          <div id="add_message">
+              <form method="post">
+                <div class="form-inline form-group">
+                     <label>员工姓名：</label>
+                     <input class="form-control" name="workerName" type="text" placeholder="请输入员工姓名">
+                     <label>员工编号：</label>
+                     <input class="form-control" name="workerId" type="text" placeholder="请输入员工编号">
+                     <label>员工性别：</label>
+                     <input class="form-control" name="workerSex" type="text" placeholder="请输入员工性别">
+                     <label>员工电话：</label>
+                     <input class="form-control" name="workerTel" type="text" placeholder="请输入员工电话">
+                </div>
+                <div class="form-inline form-group">
+                     <label>员工住址：</label>
+                     <input class="form-control" name="workerAddress" type="text" placeholder="请输入员工住址">
+                     <label>员工工种：</label>
+                     <input class="form-control" name="workerType" type="text" placeholder="请输入员工工种">
+                     <label>员工等级：</label>
+                     <input class="form-control" name="workerGrade" type="text" placeholder="请输入员工等级">
+                     <label>员工部门：</label>
+                     <input class="form-control" name="workerDept" type="text" placeholder="请输入员工部门">
+                </div>
+                <input class="btn btn-info btn-lg" type="submit" value="添加">
+              </form>
+          </div>
+
+      </div>
+</body>
+</html>
